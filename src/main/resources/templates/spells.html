@@ -58,7 +58,7 @@
   </div>
 </div>
 <div style="margin: 20px" class="collapse" id="findSpell">
-  <input id="id" type="number" name="id" placeholder="Spell ID"/>
+  <input id="id" type="number" name="id" placeholder="Spell ID" min="1">
   <button class="btn btn-primary" type="button" onclick="<!--getSpellById(this)-->" disabled>Search</button>
 </div>
 
@@ -83,7 +83,7 @@
       <div th:if="${spell.isBanned()}">
         <td><i class="fa-solid fa-ban fa-bounce" style="color: #ff0000;"></i></td>
       </div>
-      <div th:unless="${room.checkIfMessy()}">
+      <div th:unless="${spell.isBanned()}">
         <td><i class="fa-regular fa-wand-sparkles fa-beat"></i></td>
       </div>
       <td>
