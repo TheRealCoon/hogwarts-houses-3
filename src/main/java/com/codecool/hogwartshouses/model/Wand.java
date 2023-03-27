@@ -1,9 +1,6 @@
 package com.codecool.hogwartshouses.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
@@ -20,7 +17,9 @@ public class Wand {
     private Long id;
     private String woodType;
     private String color;
+    @OneToOne
     private Teacher teacher;
+    @ManyToMany
     private Set<Spell> spells;
 
 
