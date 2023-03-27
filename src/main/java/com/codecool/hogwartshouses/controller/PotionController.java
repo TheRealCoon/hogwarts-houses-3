@@ -1,14 +1,19 @@
 package com.codecool.hogwartshouses.controller;
 
+
 import com.codecool.hogwartshouses.model.Potion;
 import com.codecool.hogwartshouses.model.Recipe;
-import com.codecool.hogwartshouses.model.Student;
 import com.codecool.hogwartshouses.model.types.Ingredient;
 import com.codecool.hogwartshouses.service.PotionService;
-import com.codecool.hogwartshouses.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -17,9 +22,11 @@ import java.util.List;
 public class PotionController {
     private PotionService potionService;
 
+
     public PotionController(PotionService potionService) {
         this.potionService = potionService;
     }
+
 
     @GetMapping
     public String listPotions(Model model) {
@@ -46,5 +53,6 @@ public class PotionController {
         List<Recipe> recipes = potionService.getRecipesOfStudent(student_id);
         model.addAttribute("recipes", recipes);
         return "recipes";
+
     }
 }

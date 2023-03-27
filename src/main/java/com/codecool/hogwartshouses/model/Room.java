@@ -1,5 +1,6 @@
 package com.codecool.hogwartshouses.model;
 
+
 import com.codecool.hogwartshouses.model.types.HouseType;
 import com.codecool.hogwartshouses.model.types.PetType;
 import lombok.Builder;
@@ -46,4 +47,5 @@ public class Room implements Comparable<Room>{
     public int compareTo(Room o) {
         return this.getId()-o.getId();
     }
+
 }

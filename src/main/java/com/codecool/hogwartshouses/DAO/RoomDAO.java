@@ -3,6 +3,7 @@ package com.codecool.hogwartshouses.DAO;
 import com.codecool.hogwartshouses.model.Room;
 
 import java.util.List;
+
 import java.util.Optional;
 import java.util.Set;
 
@@ -16,4 +17,5 @@ public interface RoomDAO {
     void updateRoom(long id);
     void deleteRoom(long id);
     List<Room> getAvailableRooms();
+
 }

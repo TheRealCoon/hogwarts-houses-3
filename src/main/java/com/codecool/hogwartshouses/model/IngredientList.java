@@ -1,6 +1,6 @@
 package com.codecool.hogwartshouses.model;
 
-import com.codecool.hogwartshouses.model.type.Ingredient;
+import com.codecool.hogwartshouses.model.types.Ingredient;
 
 import java.util.List;
 

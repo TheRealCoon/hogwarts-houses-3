@@ -1,5 +1,6 @@
 package com.codecool.hogwartshouses.model;
 
+
 import com.codecool.hogwartshouses.model.types.HouseType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
