@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buildings</title>
+    <link rel="icon" type="image/x-icon" href="/img/hedvig.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Eater">
+    <style>
+      body {
+        font-family: 'Eater', serif;
+        font-size: 30px;
+      }
+    </style>
+</head>
+<body th:style="'background: url(/img/halloween_2.jpg) no-repeat center center fixed; background-size: cover'">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <img style="height: 80px; width: 140px; margin-left: 20px" th:src="@{/img/navbar_logo.png}" alt="Hogwarts">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/rooms">Rooms <span class="sr-only"></span></a>
+        <a class="nav-item nav-link" href="/students">Students</a>
+        <a class="nav-item nav-link active" href="/buildings">Buildings</a>
+          <a class="nav-item nav-link" href="/potions">Potions</a>
+      </div>
+    </div>
+  </nav>
+
+  <p>
+      <button style="margin-left: 20px" type="button" class="btn btn-light"><a href="http://localhost:8080/buildings">Get all building</a></button>
+      <a style="margin-left: 20px" class="btn btn-primary" data-bs-toggle="collapse" href="#addBuilding" role="button" aria-expanded="false" aria-controls="addBuilding">
+          Add building
+      </a>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#findBuilding" role="button" aria-expanded="false" aria-controls="findBuilding">
+          Find building
+      </a>
+  </p>
+  <div style="margin: 20px" class="collapse" id="addBuilding">
+      <div style="background-color: rgba(0, 0, 0, 0.5)" class="card card-body">
+          <form style="text-align: center; padding-top: 50px; color: white" action="/buildings" method="post">
+              <div style="padding: 10px" class="form-group">
+                  <label for="name">Building name:</label>
+                  <input id="name" type="text" name="name"/>
+              </div>
+              <p><button type="submit">Add building!</button></p>
+          </form>
+      </div>
+  </div>
+  <div style="margin: 20px" class="collapse" id="findBuilding">
+      <div style="background-color: rgba(0, 0, 0, 0.5)" class="card card-body">
+          <div style="padding: 10px" class="form-group">
+              <label style="color: white" for="id">Building id:</label>
+              <input id="id" type="number" name="id"/>
+              <button type="button" onclick="findBuildingById(this)">Search building</button>
+          </div>
+      </div>
+  </div>
+
+
+  <table style="color:white; background-color: rgba(0, 0, 0, 0.6)" class="table table-responsive table">
+
+      <thead>
+          <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <div th:each="building:${buildings}">
+              <tr>
+                  <td th:text="${building.getId()}">   </td>
+                  <td th:text="${building.getName()}">  </td>
+                  <td>
+                      <button type="button" class="btn btn-success" onclick="updateBuildingPage(this)">Update</button>
+                      <button type="button" class="btn btn-danger" onclick="deleteBuilding(this)">Delete</button>
+                  </td>
+              </tr>
+          </div>
+      </tbody>
+  </table>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script th:src="@{/js/building.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update student</title>
+    <link rel="icon" type="image/x-icon" href="/img/hedvig.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Eater">
+    <style>
+        body {
+            font-family: 'Eater', serif;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body th:style="'background: url(/img/halloween_2.jpg) no-repeat center center fixed; background-size: cover'">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            <img style="height: 80px; width: 140px; margin-left: 20px" th:src="@{/img/navbar_logo.png}" alt="Hogwarts">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/rooms">Rooms <span class="sr-only"></span></a>
+                <a class="nav-item nav-link active" href="/students">Students</a>
+                <a class="nav-item nav-link" href="/buildings">Buildings</a>
+                <a class="nav-item nav-link" href="/potions">Potions</a>
+            </div>
+        </div>
+    </nav>
+
+    <form style="text-align: center; color: white; background-color: rgba(0, 0, 0, 0.7)">
+        <div style="padding: 10px" class="form-group">
+            <label for="id">ID:</label>
+            <input th:value="${student.getId()}" id="id" type="number" name="id" readonly/>
+        </div>
+        <div style="padding: 10px" class="form-group">
+            <label for="name">Name:</label>
+            <input th:value="${student.getName()}" id="name" type="text" name="name"/>
+        </div>
+        <div style="padding: 10px" class="form-group">
+            <label for="houseType">Choose a house:</label>
+            <select id="houseType" name="houseType">
+                <option value="GRYFFINDOR" th:selected="${student.getHouseType().toString().equals('GRYFFINDOR')}">GRYFFINDOR</option>
+                <option value="HUFFLEPUFF" th:selected="${student.getHouseType().toString().equals('HUFFLEPUFF')}">HUFFLEPUFF</option>
+                <option value="RAVENCLAW" th:selected="${student.getHouseType().toString().equals('RAVENCLAW')}">RAVENCLAW</option>
+                <option value="SLYTHERIN" th:selected="${student.getHouseType().toString().equals('SLYTHERIN')}">SLYTHERIN</option>
+            </select>
+        </div>
+        <div style="padding: 10px" class="form-group">
+            <label for="petType">Choose a pet:</label>
+            <select th:value="${student.getPetType()}" id="petType" name="petType">
+                <option value="CAT" th:selected="${student.getPetType().toString().equals('CAT')}">CAT</option>
+                <option value="RAT" th:selected="${student.getPetType().toString().equals('RAT')}">RAT</option>
+                <option value="OWL" th:selected="${student.getPetType().toString().equals('OWL')}">OWL</option>
+                <option value="NONE" th:selected="${student.getPetType().toString().equals('NONE')}">NONE</option>
+            </select>
+        </div>
+        <p><button style="margin: 30px" type="button" onclick="updateStudent(this)">Update student!</button></p>
+    </form>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script th:src="@{/js/student.js}"></script>
+</body>
+</html>
