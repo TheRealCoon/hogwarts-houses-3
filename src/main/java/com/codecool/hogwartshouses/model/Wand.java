@@ -8,7 +8,6 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Wand {
@@ -22,5 +21,8 @@ public class Wand {
     @ManyToMany
     private Set<Spell> spells;
 
-
+    @Override
+    public String toString() {
+        return String.format("%s's %s %s wand", teacher.getName(), color, woodType);
+    }
 }
