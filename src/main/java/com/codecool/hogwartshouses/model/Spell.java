@@ -17,6 +17,7 @@ public class Spell {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String usage;
     private Integer power;
     private boolean isBanned;
     @ManyToMany
