@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
 
-    @Query("SELECT t FROM Teacher t join t.wand w where w.woodType = :woodType")
+    @Query("SELECT t FROM Teacher t where t.wand.woodType = :woodType")
     List<Teacher> findTeacherByWand(@Param("woodType") String woodType);
 }
