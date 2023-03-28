@@ -123,6 +123,7 @@ create table teachers(
                          wand_id int
 );
 
+drop table if exists spells cascade;
 create table spells(
                        id serial primary key,
                        name varchar(100),
