@@ -1,16 +1,18 @@
 package com.codecool.hogwartshouses.controller;
 
+import com.codecool.hogwartshouses.model.Spell;
 import com.codecool.hogwartshouses.service.SpellService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RequestMapping("/spells")
-@Controller
+@RestController
 public class SpellController {
     private final SpellService spellService;
 
@@ -19,15 +21,14 @@ public class SpellController {
     }
 
     @GetMapping
-    public String getAllSpells(Model model) {
-        model.addAttribute("spells", spellService.getAll());
-        return "spells";
+    public List<Spell> getAllSpells() {
+        return spellService.getAll();
     }
 
     @GetMapping("/{id}")
-    public String getSpellById(Model model, @PathVariable Long id) {
-        model.addAttribute("spells", List.of(spellService.getById(id)));
-        return "spells";
+    public ResponseEntity<Spell> getSpellById(@PathVariable Long id) {
+        return spellService.getById(id).map(s -> new ResponseEntity<>(s, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
 }

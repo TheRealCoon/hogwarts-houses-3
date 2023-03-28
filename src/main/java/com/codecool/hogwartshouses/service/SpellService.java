@@ -5,7 +5,7 @@ import com.codecool.hogwartshouses.model.Spell;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class SpellService {
@@ -19,7 +19,7 @@ public class SpellService {
         return spellRepository.findAll();
     }
 
-    public Spell getById(Long id) {
-        return spellRepository.findById(id).orElseThrow(NoSuchElementException::new);
+    public Optional<Spell> getById(Long id) {
+        return spellRepository.findById(id);
     }
 }
