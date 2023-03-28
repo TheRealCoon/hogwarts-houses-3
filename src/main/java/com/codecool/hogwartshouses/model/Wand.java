@@ -10,6 +10,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "WANDS")
 public class Wand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

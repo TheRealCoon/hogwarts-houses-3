@@ -11,6 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "SPELLS")
 public class Spell {
     @Id
     @JsonIgnore
