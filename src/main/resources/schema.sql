@@ -115,7 +115,7 @@ create table wands(
 
 drop table if exists teachers cascade;
 create table teachers(
-                         int serial primary key,
+                         id serial primary key,
                          name varchar(100),
                          subject varchar(100),
                          is_witch boolean,

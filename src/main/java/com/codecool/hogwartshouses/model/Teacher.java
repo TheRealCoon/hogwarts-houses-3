@@ -22,6 +22,7 @@ public class Teacher {
     private Boolean isWitch;
     private int age;
     @OneToOne
+    @JoinColumn(name = "wand_id")
     private Wand wand;
 
 

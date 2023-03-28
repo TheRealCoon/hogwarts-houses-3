@@ -17,9 +17,13 @@ public class Wand {
     private Long id;
     private String woodType;
     private String color;
-    @OneToOne
+    @OneToOne(mappedBy = "wand")
     private Teacher teacher;
     @ManyToMany
+    @JoinTable(
+            name = "wand_spell",
+            joinColumns = @JoinColumn(name = "wand_id"),
+            inverseJoinColumns = @JoinColumn(name = "spell_id"))
     private Set<Spell> spells;
 
     @Override

@@ -21,7 +21,6 @@ public class Spell {
     private String usage;
     private Integer power;
     private boolean isBanned;
-    @ManyToMany
-    //TODO set up many-to-many
+    @ManyToMany(mappedBy = "spells")
     private Set<Wand> wands;
 }
