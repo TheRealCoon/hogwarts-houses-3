@@ -20,12 +20,12 @@ public class TeacherController {
     }
 
     @GetMapping("/teachers")
-    public List<Teacher> getWands(){
+    public List<Teacher> getTeachers(){
         return teacherService.getTeachers();
     }
 
     @GetMapping("/teachers/{id}")
-    public Teacher getWandById(@PathVariable Long id){
+    public Teacher getTeacherById(@PathVariable Long id){
         return teacherService.getTeacherById(id);
     }
 }
