@@ -2,13 +2,12 @@ package com.codecool.hogwartshouses.service;
 
 import com.codecool.hogwartshouses.DAO.TeacherRepository;
 import com.codecool.hogwartshouses.mapper.TeacherMapper;
-import com.codecool.hogwartshouses.model.Teacher;
 import com.codecool.hogwartshouses.model.TeacherDTO;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TeacherService {
@@ -28,8 +27,11 @@ public class TeacherService {
                 .toList();
     }
 
-    public TeacherDTO getTeacherById(Long id) {
-        return mapper.toDto(teacherRepository.findById(id).orElse(null));
+    public Optional<TeacherDTO> getTeacherById(Long id) {
+        return teacherRepository.findById(id)
+                .stream()
+                .map(mapper::toDto)
+                .findFirst();
     }
 
     public List<TeacherDTO> findTeacherByWandWoodType(String woodType) {

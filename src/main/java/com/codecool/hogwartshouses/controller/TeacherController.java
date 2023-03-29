@@ -3,6 +3,8 @@ package com.codecool.hogwartshouses.controller;
 import com.codecool.hogwartshouses.model.TeacherDTO;
 import com.codecool.hogwartshouses.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +30,9 @@ public class TeacherController {
     }
 
     @GetMapping("/{id}")
-    public TeacherDTO getTeacherById(@PathVariable("id") Long id) {
-        return teacherService.getTeacherById(id);
+    public ResponseEntity<TeacherDTO> getTeacherById(@PathVariable("id") Long id) {
+        return teacherService.getTeacherById(id).map(teacherDTO -> new ResponseEntity<>(teacherDTO, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/wand")
