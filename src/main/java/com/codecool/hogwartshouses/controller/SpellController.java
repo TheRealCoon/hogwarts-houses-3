@@ -1,6 +1,6 @@
 package com.codecool.hogwartshouses.controller;
 
-import com.codecool.hogwartshouses.model.Spell;
+import com.codecool.hogwartshouses.model.SpellDTO;
 import com.codecool.hogwartshouses.service.SpellService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +21,12 @@ public class SpellController {
     }
 
     @GetMapping
-    public List<Spell> getAllSpells() {
+    public List<SpellDTO> getAllSpells() {
         return spellService.getAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Spell> getSpellById(@PathVariable Long id) {
+    public ResponseEntity<SpellDTO> getSpellById(@PathVariable Long id) {
         return spellService.getById(id).map(s -> new ResponseEntity<>(s, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
