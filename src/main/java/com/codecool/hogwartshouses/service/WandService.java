@@ -6,6 +6,7 @@ import com.codecool.hogwartshouses.model.WandDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WandService {
@@ -25,7 +26,10 @@ public class WandService {
                 .toList();
     }
 
-    public WandDTO getWandById(Long id) {
-        return wandMapper.toWandDTO(wandRepository.findById(id).orElse(null));
+    public Optional<WandDTO> getWandById(Long id) {
+        return wandRepository.findById(id)
+                .stream()
+                .map(wand -> wandMapper.toWandDTO(wand))
+                .findFirst();
     }
 }
