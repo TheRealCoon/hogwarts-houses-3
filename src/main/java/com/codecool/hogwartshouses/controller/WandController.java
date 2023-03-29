@@ -1,6 +1,6 @@
 package com.codecool.hogwartshouses.controller;
 
-import com.codecool.hogwartshouses.model.Wand;
+import com.codecool.hogwartshouses.model.WandDTO;
 import com.codecool.hogwartshouses.service.WandService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +17,12 @@ public class WandController {
     }
 
     @GetMapping("/wands")
-    public List<Wand> getWands(){
+    public List<WandDTO> getWands(){
         return wandService.getWands();
     }
 
     @GetMapping("/wands/{id}")
-    public Wand getWandById(@PathVariable Long id){
+    public WandDTO getWandById(@PathVariable Long id){
         return wandService.getWandById(id);
     }
 }
