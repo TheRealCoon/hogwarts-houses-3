@@ -22,7 +22,7 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<TeacherDTO> getTeachers() {
         return teacherService.getTeachers();
     }
