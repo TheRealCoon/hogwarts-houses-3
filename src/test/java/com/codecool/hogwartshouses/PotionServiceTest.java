@@ -56,8 +56,8 @@ public class PotionServiceTest {
     @BeforeEach
     void setup() {
         recipes = new ArrayList<>() {{
-            add(new Recipe( "Polyjuice Potion", new ArrayList<>()));
-            add(new Recipe("Felix Felicis", new ArrayList<>()));
+            add(new Recipe(1, "Polyjuice Potion"));
+            add(new Recipe(2, "Felix Felicis"));
 
         }};
         student = new Student(1, "Harry Potter", HouseType.GRYFFINDOR, PetType.OWL);

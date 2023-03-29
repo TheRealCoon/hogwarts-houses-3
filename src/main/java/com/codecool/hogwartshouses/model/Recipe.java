@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,6 +29,10 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public Recipe(long id, String name){
+        this.id = id;
+        this.name = name;
+    }
 
     public long getId() {
         return id;
