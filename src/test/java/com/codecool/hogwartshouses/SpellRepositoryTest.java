@@ -6,6 +6,7 @@ import com.codecool.hogwartshouses.model.Spell;
 import com.codecool.hogwartshouses.model.Teacher;
 import com.codecool.hogwartshouses.model.Wand;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -15,11 +16,11 @@ import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
 import java.util.List;
 import java.util.Set;
 
-import static org.springframework.test.util.AssertionErrors.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 @RunWith(SpringRunner.class)
@@ -34,17 +35,10 @@ public class SpellRepositoryTest {
     @Autowired
     private SpellRepository spellRepository;
 
-    private List<Teacher> teachers;
-    private List<Wand> wands;
     private List<Spell> spells;
 
-    @Test
-    public void findAll_returnsAllSpellsAsList_StatusCode200() throws Exception {
-        initializeListFields();
-        assertEquals("I have no clue where does this message go! It can be null also.", spells, spellRepository.findAll());
-    }
-
-    private void initializeListFields() {
+    @BeforeEach
+    public void initializeListFields() {
         Teacher teacher1 = new Teacher(1L, "teacher name1", "subject1", true, 30, null);
         Teacher teacher2 = new Teacher(2L, "teacher name2", "subject2", false, 100, null);
         Wand wand1 = new Wand(1L, "wand type1", "black", teacher1, null);
@@ -55,9 +49,23 @@ public class SpellRepositoryTest {
         Spell spell2 = new Spell(2L, "test_spell2", "usage2", 50, false, Set.of(wand1));
         wand1.setSpells(Set.of(spell1, spell2));
         wand2.setSpells(Set.of(spell1));
-        teachers = List.of(teacher1, teacher2);
-        wands = List.of(wand1, wand2);
         spells = List.of(spell1, spell2);
+    }
+
+    @Test
+    public void findAll_returnsAllSpellsAsList() {
+        assertEquals(spells, spellRepository.findAll());
+    }
+
+    @Test
+    public void findById_existingID_returnsCorrectSpell() {
+        Spell spell = spells.get(0);
+        assertEquals(spell, spellRepository.findById(1L).orElse(null));
+    }
+
+    @Test
+    public void findById_nonExistingID_returnsNull() {
+        assertNull(spellRepository.findById(34L).orElse(null));
     }
 
 }
