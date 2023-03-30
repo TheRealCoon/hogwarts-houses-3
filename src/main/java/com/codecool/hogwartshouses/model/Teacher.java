@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Entity
 @Getter
 @Setter
@@ -25,8 +27,19 @@ public class Teacher {
     @JoinColumn(name = "wand_id")
     private Wand wand;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Teacher teacher)) return false;
+        return age == teacher.age &&
+                Objects.equals(id, teacher.id) &&
+                Objects.equals(name, teacher.name) &&
+                Objects.equals(subject, teacher.subject) &&
+                Objects.equals(isWitch, teacher.isWitch);
+    }
 
-
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, subject, isWitch, age);
+    }
 }
