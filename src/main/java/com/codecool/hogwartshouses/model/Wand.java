@@ -3,6 +3,7 @@ package com.codecool.hogwartshouses.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -29,5 +30,20 @@ public class Wand {
     @Override
     public String toString() {
         return String.format("%s's %s %s wand", teacher.getName(), color, woodType);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wand wand)) return false;
+        return Objects.equals(id, wand.id) &&
+                Objects.equals(woodType, wand.woodType) &&
+                Objects.equals(color, wand.color) &&
+                Objects.equals(teacher, wand.teacher);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, woodType, color, teacher);
     }
 }
