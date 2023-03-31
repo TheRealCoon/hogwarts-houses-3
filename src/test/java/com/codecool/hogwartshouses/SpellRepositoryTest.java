@@ -5,8 +5,8 @@ import com.codecool.hogwartshouses.DAO.SpellRepository;
 import com.codecool.hogwartshouses.model.Spell;
 import com.codecool.hogwartshouses.model.Teacher;
 import com.codecool.hogwartshouses.model.Wand;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -37,7 +37,7 @@ public class SpellRepositoryTest {
 
     private List<Spell> spells;
 
-    @BeforeEach
+    @Before
     public void initializeListFields() {
         Teacher teacher1 = new Teacher(1L, "teacher name1", "subject1", true, 30, null);
         Teacher teacher2 = new Teacher(2L, "teacher name2", "subject2", false, 100, null);
