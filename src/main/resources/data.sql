@@ -87,8 +87,8 @@ INSERT INTO ingredients(NAME, RECIPE_ID) values ('LEECHES', 5);
 INSERT INTO studentrecipes(STUDENT_ID, RECIPE_ID) values (1, 2);
 
 insert into wands(wood_type, color)
-values ('wand type1', 'black'),
-       ('wand type2', 'white');
+values ('Oak', 'black'),
+       ('Elder Wand', 'white');
 
 insert into teachers(name, subject, is_witch, age, wand_id)
 values ('Severus Tobias Snape', 'Defence Against the Dark Arts', true, 30, 1),
