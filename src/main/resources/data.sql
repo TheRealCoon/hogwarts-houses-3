@@ -91,12 +91,12 @@ values ('wand type1', 'black'),
        ('wand type2', 'white');
 
 insert into teachers(name, subject, is_witch, age, wand_id)
-values ('teacher name1', 'subject1', true, 30, 1),
-       ('teacher name2', 'subejct2', false, 100, 2);
+values ('Severus Tobias Snape', 'Defence Against the Dark Arts', true, 30, 1),
+       ('Minerva McGonagall', 'Transfiguration', false, 100, 2);
 
 insert into spells(name, usage, power, is_banned)
-values ('spell1', 'usage1', 10, true),
-       ('spell2', 'usage2', 50, false);
+values ('avada kedavra', 'death', 10, true),
+       ('crucio', 'torturing', 50, false);
 
 insert into wand_spell(wand_id, spell_id)
 values (1,1), (1,2), (2,1);

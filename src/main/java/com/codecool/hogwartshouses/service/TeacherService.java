@@ -35,7 +35,7 @@ public class TeacherService {
     }
 
     public List<TeacherDTO> findTeacherByWandWoodType(String woodType) {
-        return teacherRepository.findTeacherByWand(woodType).stream()
+        return teacherRepository.findAllByWand_WoodType(woodType).stream()
                 .map(teacher -> mapper.toDto(teacher))
                 .toList();
     }
